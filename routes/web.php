@@ -37,6 +37,7 @@ Route::resource('genre', GenreController::class);
 Route::resource('country', CountryController::class);
 Route::resource('movie', MovieController::class);
 Route::resource('episode', EpisodeController::class);
+Route::resource('banner', BannerController::class);
 
 // Route::get('/', [
 //     LiveSearchController::class, 'index'

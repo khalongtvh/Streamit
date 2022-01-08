@@ -22,7 +22,10 @@
                 <a class="nav-link" href="{{ route('country.index')}}">Quốc Gia</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('episode.create')}}">Tập Phim</a>
+                <a class="nav-link" href="{{ route('episode.index')}}">Tập Phim</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('banner.create')}}">Banner</a>
             </li>
         </ul>
         <form class="my-2 my-lg-0 form-search">

@@ -49,11 +49,10 @@
 
                     <!-- movie -->
                     <div class="form-group">
-
                         {!! Form::label('movie_id', 'Thuộc Phim', []) !!}
-                        {!! Form::select('movie_id', $movieList, isset($episode) ? $episode->status : '', ['class'=>'form-control']) !!}
+                        {!! Form::select('movie_id', $movieList, isset($episode) ? $episode->movie_id : '', ['class'=>'form-control']) !!}
                     </div>
-                    <!-- end link -->
+                    <!-- end movie -->
                     @if(isset($episode))
                     {!! Form::submit('Cập Nhật', ['class'=>'btn btn-success']) !!}
                     @else

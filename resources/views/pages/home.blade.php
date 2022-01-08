@@ -1,6 +1,5 @@
 @extends('layout')
 @section('content')
-
 <section id="home" class="iq-main-slider p-0">
     @include('.elements.slider')
 </section>
@@ -15,7 +14,6 @@
                         <h4 class="main-title">{{$cate_home->title}}</h4>
                         <a class="iq-view-all" href="{{route ('category', $cate_home->slug) }}">Xem tất cả</a>
                     </div>
-
                     <div class="favorites-contens">
                         <ul class="favorites-slider list-inline  row p-0 mb-0">
                             @foreach ($cate_home->movie as $key => $mov)

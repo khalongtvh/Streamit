@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use Illuminate\Http\Request;
 use App\Models\Movie;
-use App\Models\Genre;
-use App\Models\Country;
-use App\Models\Category;
 
-class MovieController extends Controller
+class BannerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +15,8 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movieList = Movie::with('category', 'genre', 'country')->orderBy('id', 'DESC')->get();
-        return view('admincp.movie.index', compact('movieList'));
+        $bannerList = Banner::with('movie')->orderBy('id', 'DESC')->get();
+        return view('admincp.Banner.index', compact('bannerList'));
     }
 
     /**
@@ -28,11 +26,8 @@ class MovieController extends Controller
      */
     public function create()
     {
-        $categoryList = Category::pluck('title', 'id');
-        $countryList = Country::pluck('title', 'id');
-        $genreList = Genre::pluck('title', 'id');
-
-        return view('admincp.movie.form', compact( 'categoryList', 'countryList', 'genreList'));
+        $movieList = Movie::pluck('title', 'id');
+        return view('admincp.Banner.form', compact('movieList'));
     }
 
     /**
@@ -45,20 +40,14 @@ class MovieController extends Controller
     {
         $data = $request->all();
 
-        $movie = new Movie();
-        $movie->title = $data['title'];
-        $movie->description = $data['description'];
+        $movie = new Banner();
         $movie->status = $data['status'];
-        $movie->slug = $data['slug'];
-        $movie->category_id = $data['category_id'];
-        $movie->genre_id = $data['genre_id'];
-        $movie->country_id = $data['country_id'];
-
-        $movie->image = $data['title'];
+        $movie->movie_id = $data['movie_id'];
+        $movie->image = $data['movie_id'];
 
         $get_image = $request->file('image');
 
-        $path = 'backend/uploads/movie';
+        $path = 'backend/uploads/banner';
 
         if ($get_image) {
             $get_name_image = $get_image->getClientOriginalName();
@@ -91,12 +80,9 @@ class MovieController extends Controller
      */
     public function edit($id)
     {
-        $categoryList = Category::pluck('title', 'id');
-        $countryList = Country::pluck('title', 'id');
-        $genreList = Genre::pluck('title', 'id');
-
-        $Movie = Movie::find($id); 
-        return view('admincp.movie.form', compact('categoryList', 'countryList', 'genreList', 'Movie'));
+        $movieList = Movie::pluck('title', 'id');
+        $banner = Banner::find($id);
+        return view('admincp.Banner.form', compact('movieList', 'banner'));
     }
 
     /**
@@ -109,31 +95,25 @@ class MovieController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-
-        $movie = Movie::find($id);
-        $movie->title = $data['title'];
-        $movie->description = $data['description'];
-        $movie->status = $data['status'];
-        $movie->slug = $data['slug'];
-        $movie->category_id = $data['category_id'];
-        $movie->genre_id = $data['genre_id'];
-        $movie->country_id = $data['country_id'];
-
+        
+        $banner = Banner::find($id);
+        $banner->status = $data['status'];
+        $banner->movie_id = $data['movie_id'];
+        
         $get_image = $request->file('image');
 
-
         if ($get_image) {
-            if (!empty($movie->image)) {
-                unlink('backend/uploads/movie/' . $movie->image);
+            if (!empty($banner->image)) {
+                unlink('backend/uploads/banner/' . $banner->image);
             }
             $get_name_image = $get_image->getClientOriginalName();
             $name_image = current(explode('.', $get_name_image));
             $new_image = $name_image . rand(0, 9999) . '.' . $get_image->getClientOriginalExtension();
-            $get_image->move('backend/uploads/movie/', $new_image);
-            $movie->image = $new_image;
+            $get_image->move('backend/uploads/banner/', $new_image);
+            $banner->image = $new_image;
         }
-
-        $movie->save();
+        
+        $banner->save();
         return redirect()->back();
     }
 
@@ -145,11 +125,11 @@ class MovieController extends Controller
      */
     public function destroy($id)
     {
-        $movie = Movie::find($id);
-        if (!empty($movie->image)) {
-            unlink('backend/uploads/movie/' . $movie->image);
+        $banner = Banner::find($id);
+        if (!empty($banner->image)) {
+            unlink('backend/uploads/banner/' . $banner->image);
         }
-        $movie->delete();
+        $banner->delete();
         return back();
     }
 }

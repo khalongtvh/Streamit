@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Genre;
@@ -18,8 +19,9 @@ class IndexController extends Controller
         $categoryList = Category::orderBy('id', 'DESC')->where('status', 1)->get();
         $genreList = Genre::orderBy('id', 'DESC')->where('status', 1)->get();
         $countryList = Country::orderBy('title', 'DESC')->where('status', 1)->get();
+        $bannerList = Banner::orderBy('id', 'DESC')->where('status', 1)->get();
         $category_home = Category::with('movie')->orderBy('id', 'DESC')->where('status', 1)->get();
-        return view('pages.home', compact('categoryList', 'genreList', 'countryList', 'category_home'));
+        return view('pages.home', compact('categoryList', 'genreList', 'countryList', 'bannerList', 'category_home'));
     }
 
     public function category($slug)
