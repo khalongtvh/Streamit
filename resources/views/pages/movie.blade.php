@@ -8,17 +8,21 @@
 <section class="movie-detail container-fluid">
     <h4 class="trending-text text-uppercase mt-0" style="font-size: 50px;">{{$movie->title}}</h4>
     <ul class="list-inline p-0 mt-4 share-icons music-play-lists">
-        <li><span><i class="fa fa-bookmark-o" aria-hidden="true"></i></span></li>
-        <li><span><i class="fa fa-heart-o" aria-hidden="true"></i></span></li>
-        <li class="share">
-            <span><i class="fa fa-share-square-o" aria-hidden="true"></i></i></span>
-            <div class="share-box">
-                <div class="d-flex align-items-center">
-                    <a href="#" class="share-ico"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                    <a href="#" class="share-ico"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        <form action="" method="POST">
+            {{csrf}}
+            <li><span><i class="fa fa-bookmark-o" aria-hidden="true"></i></span></li>
+            <li><span><i class="fa fa-heart-o" aria-hidden="true"></i></span></li>
+            <li class="share">
+                <span><i class="fa fa-share-square-o" aria-hidden="true"></i></i></span>
+                <div class="share-box">
+                    <div class="d-flex align-items-center">
+                        <a href="#" class="share-ico"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" class="share-ico"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </div>
                 </div>
-            </div>
-        </li>
+            </li>
+        </form>
+
     </ul>
 </section>
 
@@ -65,8 +69,8 @@
         <div class="row">
             <div class="col-sm-12 overflow-hidden">
                 <div class="iq-main-header d-flex align-items-center justify-content-between">
-                    <h4 class="main-title">Recommended For You</h4>
-                    <a class="iq-view-all" href="movie-category.html">View All</a>
+                    <h4 class="main-title">Nội dung tương tự</h4>
+                    <a class="iq-view-all" href="{{route ('genre', $movie->genre->slug)}}">Xem tất cả</a>
                 </div>
                 <div class="tvthrillers-contens">
                     <ul class="favorites-slider list-inline row p-0 mb-0">
@@ -77,10 +81,9 @@
                                     <img src="{{asset('backend/uploads/movie/'.$recommnented->image)}}" class="img-fluid" alt="">
                                 </div>
                                 <div class="block-description">
-                                    <h6 class="iq-title"><a href="show-details.html">Day of Darkness</a></h6>
+                                    <h6 class="iq-title"><a href="{{route('movie',$recommnented->slug)}}">Day of Darkness</a></h6>
                                     <div class="movie-time d-flex align-items-center my-2">
                                         <div class="badge badge-secondary p-1 mr-2">15+</div>
-                                        <span class="text-white">2 Seasons</span>
                                     </div>
                                     <div class="hover-buttons">
                                         <span class="btn btn-hover iq-button"><i class="fa fa-play mr-1" aria-hidden="true"></i>

@@ -66,7 +66,7 @@ class IndexController extends Controller
         $countryList = Country::orderBy('title', 'DESC')->where('status', 1)->get();
 
         $movie = Movie::with('genre', 'category', 'country')->where('slug', $slug)->where('status', 1)->first();
-        $movie_recommented = Movie::with('genre', 'category', 'country')->where('country_id', $movie->country->id)->orderBy(DB::raw('RAND()'))->whereNotIn('slug', [$slug])->get();
+        $movie_recommented = Movie::with('genre', 'category', 'country')->where('category_id', $movie->category->id)->orderBy(DB::raw('RAND()'))->whereNotIn('slug', [$slug])->get();
         return view('pages.movie', compact('categoryList', 'genreList', 'countryList', 'movie', 'movie_recommented'));
     }
 
@@ -139,5 +139,13 @@ class IndexController extends Controller
             );
             echo json_encode($data);
         }
+    }
+
+    public function login(){
+        return view('login_user.login_user');
+    }
+
+    public function sign_up(){
+        return view('login_user.sign_up');
     }
 }

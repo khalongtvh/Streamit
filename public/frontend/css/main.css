@@ -28,6 +28,10 @@
     overflow: hidden;
 }
 
+.card-img {
+    height: 100%;
+}
+
 .movie-card:hover .card-img {
     transform: scale(1.1);
 }

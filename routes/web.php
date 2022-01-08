@@ -26,6 +26,9 @@ Route::get('/phim/{slug}', [IndexController::class, 'movie'])->name('movie');
 Route::get('/manage-profile', [IndexController::class, 'profile'])->name('profile');
 Route::get('/episodes/{slug}', [IndexController::class, 'episode'])->name('episode');
 
+Route::get('/login_user', [IndexController::class, 'login'])->name('login_user');
+Route::get('/sign_up', [IndexController::class, 'sign_up'])->name('sign_up');
+
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -38,10 +41,6 @@ Route::resource('country', CountryController::class);
 Route::resource('movie', MovieController::class);
 Route::resource('episode', EpisodeController::class);
 Route::resource('banner', BannerController::class);
+Route::resource('user', UserController::class);
 
-// Route::get('/', [
-//     LiveSearchController::class, 'index'
-// ]);
-
-// Route::get('/action', 'LiveSearchController@action')->name('live_search.action');
 Route::get('/action', 'IndexController@action')->name('live_search.action');

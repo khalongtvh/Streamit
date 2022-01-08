@@ -19,7 +19,7 @@
                             @foreach ($cate_home->movie as $key => $mov)
                             <li class="slide-item">
                                 <div class="block-images position-relative">
-                                    <div class="img-box">
+                                    <div class="img-box" >
                                         <img src="{{asset('backend/uploads/movie/'.$mov->image)}}" class="img-fluid" alt="">
                                     </div>
                                     <div class="block-description">
@@ -28,14 +28,10 @@
                                             <!-- <div class="badge badge-secondary p-1 mr-2">13+</div>
                                             <span class="text-white">2h 30m</span> -->
                                         </div>
-                                        <div class="hover-buttons">
-                                            <span class="btn btn-hover iq-button">
-                                                <i class="fa fa-play mr-1" aria-hidden="true"></i>
-                                                Play Now
-                                            </span>
-                                        </div>
+                                        <a class="hover-buttons" href="{{route('movie',$mov->slug)}}">
+                                            <span class="btn btn-hover iq-button"><i class="fa fa-play mr-1" aria-hidden="true"></i>Play Now</span>
+                                        </a>
                                     </div>
-
                                     <div class="block-social-info">
                                         <ul class="list-inline p-0 m-0 music-play-lists">
                                             <li class="share">

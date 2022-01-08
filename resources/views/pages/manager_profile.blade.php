@@ -23,22 +23,6 @@
                                         <label>Email</label>
                                         <input type="text" class="form-control mb-0" id="exampleInputl2" placeholder="Nhập email" autocomplete="off" required>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Số Điện Thoại</label>
-                                        <input type="text" class="form-control mb-0" id="exampleInputl2" placeholder="Nhập số điện thoại" autocomplete="off" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Ngày sinh</label>
-                                        <input type="text" class="form-control date-input basicFlatpickr mb-0" placeholder="Select Date" id="exampleInputPassword2" required>
-                                    </div>
-                                    <div class="form-group d-flex flex-md-row flex-column">
-                                        <div class="iq-custom-select d-inline-block manage-gen">
-                                            <select name="cars" class="form-control pro-dropdown">
-                                                <option value="female">Nam</option>
-                                                <option value="male">Nữ</option>
-                                            </select>
-                                        </div>
-                                    </div>
                                     <div class="d-flex">
                                         <a href="#" class="btn btn-hover">Save</a>
                                         <a href="{{route('homepage')}}" class="btn btn-link">Cancel</a>

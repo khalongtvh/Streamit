@@ -7,7 +7,7 @@
             @foreach($movie as $key=>$mov)
             <div class="movie-card">
                 <div class="card-head">
-                    <img src="{{asset('backend/uploads/movie/'.$mov->image)}}" alt="" class="card-img">
+                    <img src="{{asset('backend/uploads/movie/'.$mov->image)}}" alt="" class="card-img" style="height: 100%;">
                     <div class="card-overlay">
                         <div class="bookmark">
                             <ion-icon name="bookmark-outline"></ion-icon>

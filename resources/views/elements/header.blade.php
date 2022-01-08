@@ -192,7 +192,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </form>
                                 </div>
@@ -220,7 +219,7 @@
                             </li>
 
                             <!-- user -->
-                            <li class="nav-item nav-icon">
+                            <!-- <li class="nav-item nav-icon">
                                 <a href="#" class="iq-user-dropdown search-toggle p-0 d-flex align-items-center" data-toggle="search-toggle">
                                     <img src="{{asset('frontend/images/user/user.jpg')}}" class="img-fluid avatar-40 rounded-circle" alt="user">
                                 </a>
@@ -237,7 +236,7 @@
                                                     </div>
                                                 </div>
                                             </a>
-                                            <a href="login.html" class="iq-sub-card setting-dropdown">
+                                            <a href="{{route('login_user')}}" class="iq-sub-card setting-dropdown">
                                                 <div class="media align-items-center">
                                                     <div class="right-icon">
                                                         <i class="fa fa-sign-out" aria-hidden="true"></i>
@@ -250,7 +249,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </nav>
