@@ -98,10 +98,12 @@ class IndexController extends Controller
 
     function action(Request $request)
     {
+        $host = request()->getHttpHost();
+        // $host1 = $request->getHttpHost();
         if ($request->ajax()) {
             $output = '';
             $result = '';
-            $url = "{{url('frontend/images/notify/thumb-1.jpg')}}";
+            $url_image = "http://".$host."/backend/uploads/movie";
             $query = $request->get('query');
             if ($query != '') {
                 $data = DB::table('movies')
@@ -114,14 +116,14 @@ class IndexController extends Controller
                     $output .= '<tr>
                                     <td>' . $row->title . '</td>
                                 </tr>';
-                    $result .= '<a href="#" class="iq-sub-card">' .
-                        '<div class="media align-items-center">' .
-                        '<img src="' . 'http://127.0.0.1:8000/backend/uploads/movie'.'/'.$row->image . '" class="img-fluid mr-3" alt="streamit" style="width : 40%"/>' .
-                        '<div class="media-body">' .
-                        '<h6 class="mb-0 ">' . $row->title . '</h6>' .
-                        '</div>' .
-                        '</div>' .
-                        '</a>';
+                    $result .= '<a href="http://'.$host.'/phim/'.$row->slug.'" class="iq-sub-card">' .
+                                '<div class="media align-items-center">' .
+                                '<img src="' . $url_image . '/' . $row->image . '" class="img-fluid mr-3" alt="streamit" style="width : 40%"/>' .
+                                '<div class="media-body">' .
+                                '<h6 class="mb-0 ">' . $row->title . '</h6>' .
+                                '</div>' .
+                                '</div>' .
+                                '</a>';
                 }
             } else {
                 $output =   '<tr>

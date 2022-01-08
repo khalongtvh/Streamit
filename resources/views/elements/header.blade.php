@@ -4,7 +4,7 @@
 <head>
     <title>Live search in laravel using AJAX</title>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
@@ -187,19 +187,13 @@
                                     <form action="#" class="searchbox">
                                         <div class="form-group position-relative">
                                             <input type="text" id="search" class="text search-input font-size-12" placeholder="Gõ vào đây để tìm kiếm..." name="search">
-                                            <div class="iq-card shadow-none m-0">
-                                                <div class="iq-card-body" id="result_seach">
-                                                    <a href="#" class="iq-sub-card">
-                                                        <div class="media align-items-center">
-                                                            <img src="{{asset('frontend/images/notify/thumb-1.jpg')}}" class="img-fluid mr-3" alt="streamit" />
-                                                            <div class="media-body">
-                                                                <h6 class="mb-0 ">Boot Bitty</h6>
-                                                                <small class="font-size-12"> just now</small>
-                                                            </div>
-                                                        </div>
-                                                    </a>
+                                            <div class="iq-sub-dropdown">
+                                                <div class="iq-card shadow-none m-0">
+                                                    <div class="iq-card-body" id="result_seach">
+                                                    </div>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </form>
                                 </div>
@@ -207,12 +201,7 @@
                             <!-- bookmark -->
                             <li class="nav-item nav-icon">
                                 <a href="#" class="search-toggle" data-toggle="search-toggle">
-                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" class="noti-svg">
-                                    <path fill="none" d="M0 0h24v24H0z" />
-                                    <path d="M18 10a6 6 0 1 0-12 0v8h12v-8zm2 8.667l.4.533a.5.5 0 0 1-.4.8H4a.5.5 0 0 1-.4-.8l.4-.533V10a8 8 0 1 1 16 0v8.667zM9.5 21h5a2.5 2.5 0 1 1-5 0z" />
-                                </svg> -->
                                     <i class="fa fa-bookmark-o" aria-hidden="true"></i>
-                                    <!-- <span class="bg-danger dots"></span> -->
                                 </a>
                                 <div class="iq-sub-dropdown">
                                     <div class="iq-card shadow-none m-0">
@@ -223,24 +212,6 @@
                                                     <div class="media-body">
                                                         <h6 class="mb-0 ">Boot Bitty</h6>
                                                         <small class="font-size-12"> just now</small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="iq-sub-card">
-                                                <div class="media align-items-center">
-                                                    <img src="{{asset('frontend/images/notify/thumb-2.jpg')}}" class="img-fluid mr-3" alt="streamit" />
-                                                    <div class="media-body">
-                                                        <h6 class="mb-0 ">The Last Breath</h6>
-                                                        <small class="font-size-12">15 minutes ago</small>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="#" class="iq-sub-card">
-                                                <div class="media align-items-center">
-                                                    <img src="{{asset('frontend/images/notify/thumb-3.jpg')}}" class="img-fluid mr-3" alt="streamit" />
-                                                    <div class="media-body">
-                                                        <h6 class="mb-0 ">The Hero Camp</h6>
-                                                        <small class="font-size-12">1 hour ago</small>
                                                     </div>
                                                 </div>
                                             </a>
@@ -296,6 +267,9 @@
     $(document).ready(function() {
         $(document).on('keyup', '#search', function() {
             var query = $(this).val();
+            if(query == ''){
+                $('#result_seach').html('');
+            }
             $.ajax({
                 url: "{{ route('live_search.action') }}",
                 method: 'GET',
