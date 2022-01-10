@@ -36,7 +36,7 @@
                             {!! Form::open(['method'=>'DELETE','route'=>['country.destroy', $country->id], 'onsubmit'=>'return confirm("Xác Nhận Xoá!")']) !!}
                             {!! Form::submit('Xoá', ['class'=> 'btn btn-danger']) !!}
                             {!! Form::close() !!}
-                            <a href="{{route('country.edit', $country->id)}}" class="btn btn-warning">Chỉnh Sửa</a>
+                            <a href="{{route('country.edit', $country->id)}}" class="btn btn-warning">Edit</a>
                         </td>
                     </tr>
                     @endforeach

@@ -66,14 +66,16 @@
                             <a style="font-size: 18px;" href="{{route ('country', $movie->country->slug) }}">{{$movie->country->title}}</a>
                         </div>
                         <p class="trending-dec w-100 mb-0">{{$movie->description}}</p>
-
                     </div>
                 </div>
             </div>
         </div>
         <div id="episodes" class="tab-pane fade" role="tabpanel">
-            <a class="btn btn-hover iq-button" href="{{route ('episode', $movie->slug) }}"><i class="fa fa-play mr-1" aria-hidden="true"></i>1</a>
-            <a class="btn btn-hover iq-button" href="{{route ('episode', $movie->slug) }}"><i class="fa fa-play mr-1" aria-hidden="true"></i>2</a>
+        <!-- <a class="btn btn-hover iq-button" href="{{url('episodes/'.$episode_first->slug_episode)}}"><i class="fa fa-play mr-1" aria-hidden="true"></i>Xem phim</a> -->
+            
+            @foreach($episode as $key=>$epi)
+            <a class="btn btn-hover iq-button" href="{{url('episodes/'.$epi->slug_episode)}}"><i class="fa fa-play mr-1" aria-hidden="true"></i>{{$key+1}}</a>
+            @endforeach
         </div>
 </section>
 <section id="iq-tvthrillers" class="s-margin">
@@ -98,8 +100,7 @@
                                         <div class="badge badge-secondary p-1 mr-2">15+</div>
                                     </div>
                                     <div class="hover-buttons">
-                                        <span class="btn btn-hover iq-button"><i class="fa fa-play mr-1" aria-hidden="true"></i>
-                                            Play Now</span>
+                                        <span class="btn btn-hover iq-button"><i class="fa fa-play mr-1" aria-hidden="true"></i>Play Now</span>
                                     </div>
                                 </div>
                                 <div class="block-social-info">

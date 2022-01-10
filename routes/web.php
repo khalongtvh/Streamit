@@ -25,7 +25,7 @@ Route::get('/quoc-gia/{slug}', [IndexController::class, 'country'])->name('count
 Route::get('/phim/{slug}', [IndexController::class, 'movie'])->name('movie');   
 
 Route::get('/episodes/{slug}', [IndexController::class, 'episode'])->name('episode');
-
+ 
 // bookmark
 Route::post('/save-cart', [CartController::class, 'save_cart']);
 Route::get('/show-cart', [CartController::class, 'show_cart']);

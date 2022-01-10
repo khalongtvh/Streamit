@@ -38,7 +38,7 @@
                             {!! Form::submit('Xoá', ['class'=> 'btn btn-danger']) !!}
                             {!! Form::close() !!}
 
-                            <a href="{{route('category.edit', $category->id)}}" class="btn btn-warning">Chỉnh Sửa</a>
+                            <a href="{{route('category.edit', $category->id)}}" class="btn btn-warning">Edit</a>
                         </td>
                     </tr>
                     @endforeach

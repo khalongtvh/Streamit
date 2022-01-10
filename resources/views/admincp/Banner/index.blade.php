@@ -31,7 +31,7 @@
                             {!! Form::open(['method'=>'DELETE','route'=>['banner.destroy', $banner->id], 'onsubmit'=>'return confirm("Xác Nhận Xoá!")']) !!}
                             {!! Form::submit('Xoá', ['class'=> 'btn btn-danger']) !!}
                             {!! Form::close() !!}
-                            <a href="{{route('banner.edit', $banner->id)}}" class="btn btn-warning">Chỉnh Sửa</a>
+                            <a href="{{route('banner.edit', $banner->id)}}" class="btn btn-warning">Edit</a>
                         </td>
                     </tr>
                     @endforeach

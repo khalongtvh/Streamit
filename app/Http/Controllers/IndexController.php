@@ -67,9 +67,32 @@ class IndexController extends Controller
 
         $movie = Movie::with('genre', 'category', 'country')->where('slug', $slug)->where('status', 1)->first();
         $movie_recommented = Movie::with('genre', 'category', 'country')->where('category_id', $movie->category->id)->orderBy(DB::raw('RAND()'))->whereNotIn('slug', [$slug])->get();
-        return view('pages.movie', compact('categoryList', 'genreList', 'countryList', 'movie', 'movie_recommented'));
+        
+        $episode = Episode::with('movie')->orderBy('id', 'ASC')->where('movie_id', $movie->id)->get();
+
+        $episode_first = Episode::with('movie')->orderBy('id', 'ASC')->where('movie_id', $movie->id)->first();
+        return view('pages.movie', compact('categoryList', 'genreList', 'countryList', 'movie', 'movie_recommented', 'episode', 'episode_first'));
     }
 
+    public function episode($slug)
+    {
+        $categoryList = Category::orderBy('id', 'DESC')->where('status', 1)->get();
+        $genreList = Genre::orderBy('id', 'DESC')->where('status', 1)->get();
+        $countryList = Country::orderBy('title', 'DESC')->where('status', 1)->get();
+
+        $movie = Episode::where('slug_episode', $slug)->first();
+        
+        $episode = Episode::with(('movie'))->where('slug_episode', $slug)->where('movie_id', $movie->movie_id)->first();
+        
+        $all_episode = Episode::with('movie')->orderBy('id', 'ASC')->where('movie_id', $movie->movie_id)->get();
+        return view('pages.episode', compact('categoryList', 'genreList', 'countryList', 'episode', 'all_episode'));    
+
+        // echo '<pre>';
+        // print_r($all_episode);
+        // echo'</pre>';
+    }
+
+    
     public function watch()
     {
         $categoryList = Category::orderBy('id', 'DESC')->where('status', 1)->get();
@@ -79,16 +102,6 @@ class IndexController extends Controller
         return view('pages.manager_profile', compact('categoryList', 'genreList', 'countryList'));
     }
 
-    public function episode($slug)
-    {
-        $categoryList = Category::orderBy('id', 'DESC')->where('status', 1)->get();
-        $genreList = Genre::orderBy('id', 'DESC')->where('status', 1)->get();
-        $countryList = Country::orderBy('title', 'DESC')->where('status', 1)->get();
-
-        $movie = Movie::with('genre', 'category', 'country')->where('slug', $slug)->where('status', 1)->first();
-        $movie_recommented = Movie::with('genre', 'category', 'country')->where('country_id', $movie->country->id)->orderBy(DB::raw('RAND()'))->whereNotIn('slug', [$slug])->get();
-        return view('pages.movie', compact('categoryList', 'genreList', 'countryList', 'movie', 'movie_recommented'));
-    }
 
     public function profile()
     {

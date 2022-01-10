@@ -27,7 +27,7 @@
                             {!! Form::open(['method'=>'DELETE','route'=>['episode.destroy', $episode->id], 'onsubmit'=>'return confirm("Xác Nhận Xoá!")']) !!}
                             {!! Form::submit('Xoá', ['class'=> 'btn btn-danger']) !!}
                             {!! Form::close() !!}
-                            <a href="{{route('episode.edit', $episode->id)}}" class="btn btn-warning">Chỉnh Sửa</a>
+                            <a href="{{route('episode.edit', $episode->id)}}" class="btn btn-warning">Edit</a>
                         </td>
                     </tr>
                     @endforeach
