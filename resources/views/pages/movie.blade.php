@@ -10,12 +10,14 @@
 </style>
 
 <div class="video-container iq-main-slider">
-    <video class="video d-block" controls loop>
-        <source src="{{asset('frontend/video/sample-video.mp4')}}" type="video/mp4">
-    </video>
+    @if($episode_first)
+    <p align="center">
+        <iframe width="900" height="500" src="{!! $episode_first->link_movie !!}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </p>
+    @endif
 </div>
 <section class="movie-detail container-fluid">
-    <h4 class="trending-text text-uppercase mt-0" style="font-size: 50px;">{{$movie->title}}</h4>
+    <h4 class="trending-text text-uppercase mt-0" style="font-size: 40px;">{{$movie->title}}</h4>
     <ul class="list-inline p-0 mt-4 share-icons music-play-lists">
         <form action="{{URL::to('/save-cart')}}" method="POST">
             {{csrf_field()}}
@@ -52,7 +54,6 @@
             <div class="row" id="info_movsie">
                 <div class="col-lg-12">
                     <div class="trending-info season-info g-border">
-
                         <div class="d-flex align-items-center text-white text-detail episode-name mb-0">
                             <span style="font-size: 18px;"> Điểm IMDb > </span>
                             <spans tyle="font-size: 18px;"> 8.0</spans>
@@ -71,8 +72,6 @@
             </div>
         </div>
         <div id="episodes" class="tab-pane fade" role="tabpanel">
-        <!-- <a class="btn btn-hover iq-button" href="{{url('episodes/'.$episode_first->slug_episode)}}"><i class="fa fa-play mr-1" aria-hidden="true"></i>Xem phim</a> -->
-            
             @foreach($episode as $key=>$epi)
             <a class="btn btn-hover iq-button" href="{{url('episodes/'.$epi->slug_episode)}}"><i class="fa fa-play mr-1" aria-hidden="true"></i>{{$key+1}}</a>
             @endforeach
@@ -83,50 +82,10 @@
         <div class="row">
             <div class="col-sm-12 overflow-hidden">
                 <div class="iq-main-header d-flex align-items-center justify-content-between">
-                    <h4 class="main-title">Nội dung tương tự</h4>
+                    <h4 class="main-title">Phim thể loại tương tự</h4>
                     <a class="iq-view-all" href="{{route ('genre', $movie->genre->slug)}}">Xem tất cả</a>
                 </div>
-                <div class="tvthrillers-contens">
-                    <ul class="favorites-slider list-inline row p-0 mb-0">
-                        @foreach($movie_recommented as $key=>$recommnented)
-                        <li class="slide-item">
-                            <div class="block-images position-relative">
-                                <div class="img-box">
-                                    <img src="{{asset('backend/uploads/movie/'.$recommnented->image)}}" class="img-fluid" alt="">
-                                </div>
-                                <div class="block-description">
-                                    <h6 class="iq-title"><a href="{{route('movie',$recommnented->slug)}}">Day of Darkness</a></h6>
-                                    <div class="movie-time d-flex align-items-center my-2">
-                                        <div class="badge badge-secondary p-1 mr-2">15+</div>
-                                    </div>
-                                    <div class="hover-buttons">
-                                        <span class="btn btn-hover iq-button"><i class="fa fa-play mr-1" aria-hidden="true"></i>Play Now</span>
-                                    </div>
-                                </div>
-                                <div class="block-social-info">
-                                    <ul class="list-inline p-0 m-0 music-play-lists">
-                                        <li class="share">
-                                            <span><i class="ri-share-fill"></i></span>
-                                            <div class="share-box">
-                                                <div class="d-flex align-items-center">
-                                                    <a href="https://www.facebook.com/sharer?u=https://iqonic.design/wp-themes/streamit_wp/movie/shadow/" target="_blank" rel="noopener noreferrer" class="share-ico" tabindex="0"><i class="ri-facebook-fill"></i></a>
-                                                    <a href="https://twitter.com/intent/tweet?text=Currentlyreading" target="_blank" rel="noopener noreferrer" class="share-ico" tabindex="0"><i class="ri-twitter-fill"></i></a>
-                                                    <a href="#" data-link="https://iqonic.design/wp-themes/streamit_wp/movie/shadow/" class="share-ico iq-copy-link" tabindex="0"><i class="ri-links-fill"></i></a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li><span><i class="fa fa-heart-o" aria-hidden="true"></i></span>
-                                            <span class="count-box">19+</span>
-                                        </li>
-                                        <li><span><i class="ri-add-line"></i></span></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
+                @include('elements.recommented')
             </div>
         </div>
     </div>

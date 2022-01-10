@@ -85,7 +85,10 @@ class IndexController extends Controller
         $episode = Episode::with(('movie'))->where('slug_episode', $slug)->where('movie_id', $movie->movie_id)->first();
         
         $all_episode = Episode::with('movie')->orderBy('id', 'ASC')->where('movie_id', $movie->movie_id)->get();
-        return view('pages.episode', compact('categoryList', 'genreList', 'countryList', 'episode', 'all_episode'));    
+
+        $movie_recommented = Movie::with('genre', 'category', 'country')->where('category_id', $episode->movie->category->id)->orderBy(DB::raw('RAND()'))->whereNotIn('slug', [$episode->movie->slug])->get();
+        
+        return view('pages.episode', compact('categoryList', 'genreList', 'countryList', 'episode', 'all_episode', 'movie_recommented'));    
     }
 
     

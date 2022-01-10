@@ -1982,8 +1982,8 @@ video {
 }
 
 .video-container {
+    margin-top: 20px;
     width: 100%;
-    height: 650px;
     overflow: hidden;
     position: relative;
 }
@@ -3206,6 +3206,7 @@ ul.f-link li a:hover {
 
 .video-container.iq-main-slider iframe {
     height: 70vh;
+    width: 70%;
 }
 
 
@@ -4446,7 +4447,6 @@ h3 {
 
 h4 {
     font-size: 1.777em;
-    line-height: 3em;
 }
 
 h5 {
