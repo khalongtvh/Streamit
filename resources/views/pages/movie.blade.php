@@ -1,5 +1,14 @@
 @extends('layout')
 @section('content')
+<style>
+    .button {
+        border: none;
+        cursor: pointer;
+        border-radius: 50%;
+        color: white;
+    }
+</style>
+
 <div class="video-container iq-main-slider">
     <video class="video d-block" controls loop>
         <source src="{{asset('frontend/video/sample-video.mp4')}}" type="video/mp4">
@@ -8,10 +17,14 @@
 <section class="movie-detail container-fluid">
     <h4 class="trending-text text-uppercase mt-0" style="font-size: 50px;">{{$movie->title}}</h4>
     <ul class="list-inline p-0 mt-4 share-icons music-play-lists">
-        <form action="" method="POST">
-            {{csrf}}
-            <li><span><i class="fa fa-bookmark-o" aria-hidden="true"></i></span></li>
-            <li><span><i class="fa fa-heart-o" aria-hidden="true"></i></span></li>
+        <form action="{{URL::to('/save-cart')}}" method="POST">
+            {{csrf_field()}}
+            <input name="movieid_hidden" type="hidden" value="{{$movie->id}}" />
+            <input name="movietitle_hidden" type="hidden" value="{{$movie->title}}" />
+            <input name="movieimage_hidden" type="hidden" value="{{$movie->image}}" />
+            <li>
+                <button class="button"><span><i class="fa fa-bookmark-o" aria-hidden="true"></i></span></i></button>
+            </li>
             <li class="share">
                 <span><i class="fa fa-share-square-o" aria-hidden="true"></i></i></span>
                 <div class="share-box">
@@ -22,7 +35,6 @@
                 </div>
             </li>
         </form>
-
     </ul>
 </section>
 

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\LiveSearchController;
 /*
 |--------------------------------------------------------------------------
@@ -23,15 +24,17 @@ Route::get('/the-loai/{slug}', [IndexController::class, 'genre'])->name('genre')
 Route::get('/quoc-gia/{slug}', [IndexController::class, 'country'])->name('country');
 Route::get('/phim/{slug}', [IndexController::class, 'movie'])->name('movie');   
 
-Route::get('/manage-profile', [IndexController::class, 'profile'])->name('profile');
 Route::get('/episodes/{slug}', [IndexController::class, 'episode'])->name('episode');
 
-Route::get('/login_user', [IndexController::class, 'login'])->name('login_user');
-Route::get('/sign_up', [IndexController::class, 'sign_up'])->name('sign_up');
+// bookmark
+Route::post('/save-cart', [CartController::class, 'save_cart']);
+Route::get('/show-cart', [CartController::class, 'show_cart']);
+Route::get('/delete-to-cart/{rowId}', [CartController::class, 'delete_to_cart']);
 
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 
 //admin route
 
@@ -44,3 +47,9 @@ Route::resource('banner', BannerController::class);
 Route::resource('user', UserController::class);
 
 Route::get('/action', 'IndexController@action')->name('live_search.action');
+
+
+
+Route::get('/login_user', [IndexController::class, 'login'])->name('login_user');
+Route::get('/sign_up', [IndexController::class, 'sign_up'])->name('sign_up');
+Route::get('/manage-profile', [IndexController::class, 'profile'])->name('profile');

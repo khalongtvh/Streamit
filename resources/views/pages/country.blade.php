@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-<div class="container_content">
+<div class="container_content container-fluid">
     <h4>Phim {{$country_slug->title}}</h4>
     <main>
         <div class="movies-grid">

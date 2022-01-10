@@ -7,9 +7,8 @@
 
 .movies-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 30px;
-    margin-bottom: 60px;
+    grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+    gap: 10px;
 }
 
 .movie-card {
@@ -22,9 +21,8 @@
 
 .movie-card .card-head {
     position: relative;
-    height: 250px;
+    height: 278px;
     border-radius: 15px;
-    margin-bottom: 15px;
     overflow: hidden;
 }
 
@@ -105,7 +103,7 @@
 .movie-card .card-title {
     font-size: var(--fs-md);
     font-weight: var(--fw-5);
-    margin-bottom: 5px;
+    padding: 8px 15px;
 }
 
 .movie-card:hover .card-title {
@@ -120,4 +118,8 @@
 
 .movie-card .genre {
     margin-right: 8px;
+}
+
+img {
+    image-rendering: pixelated;
 }
