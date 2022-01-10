@@ -86,10 +86,6 @@ class IndexController extends Controller
         
         $all_episode = Episode::with('movie')->orderBy('id', 'ASC')->where('movie_id', $movie->movie_id)->get();
         return view('pages.episode', compact('categoryList', 'genreList', 'countryList', 'episode', 'all_episode'));    
-
-        // echo '<pre>';
-        // print_r($all_episode);
-        // echo'</pre>';
     }
 
     
