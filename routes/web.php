@@ -53,3 +53,6 @@ Route::get('/action', 'IndexController@action')->name('live_search.action');
 Route::get('/login_user', [IndexController::class, 'login'])->name('login_user');
 Route::get('/sign_up', [IndexController::class, 'sign_up'])->name('sign_up');
 Route::get('/manage-profile', [IndexController::class, 'profile'])->name('profile');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

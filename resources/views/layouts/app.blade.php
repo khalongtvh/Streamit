@@ -10,14 +10,13 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="stylesheet" href="{{asset('backend/css/popup_style.css')}}" type="text/css">
+    <!-- Style Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         .img-thumbnail:hover {
             transform: scale(2.5);
@@ -48,7 +47,6 @@
                     <ul class="navbar-nav me-auto">
 
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
@@ -86,6 +84,7 @@
                 </div>
             </div>
         </nav>
+
         <main class="py-4">
             @if(Auth::id())
             <div class="container">
@@ -98,7 +97,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js" type="text/javascript"></script>
-    <script src="{{asset('backend/js/popup_script.js')}}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#table').DataTable();
