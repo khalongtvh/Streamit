@@ -55,6 +55,12 @@
     </div>
     <!-- back-to-top End -->
     <!-- jQuery, Popper JS -->
+
+    <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0" nonce="ilkqbjqH"></script>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v12.0" nonce="943pavWQ"></script>
     <script src="{{asset('frontend/js/jquery-3.4.1.min.js')}}"></script>
 
     <script src="{{asset('frontend/js/popper.min.js')}}"></script>

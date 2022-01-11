@@ -31,7 +31,7 @@
                 <span><i class="fa fa-share-square-o" aria-hidden="true"></i></i></span>
                 <div class="share-box">
                     <div class="d-flex align-items-center">
-                        <a href="#" class="share-ico"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <div data-href="{{\URL::current()}}" data-layout="box_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2Fepisodes%2Ftap-1&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fa fa-facebook" aria-hidden="true"></i></a></div>
                         <a href="#" class="share-ico"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                     </div>
                 </div>
@@ -47,6 +47,9 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" data-toggle="pill" href="#episodes" role="tab" aria-selected="false">Tập phim</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="pill" href="#comments" role="tab" aria-selected="false">Bình luận</a>
         </li>
     </ul>
     <div class="tab-content">
@@ -70,7 +73,7 @@
                             <span style="font-size: 18px;">Tóm tắt phim : </span>
                             <span>{{$movie->description}}</span>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
@@ -79,6 +82,10 @@
             @foreach($episode as $key=>$epi)
             <a class="btn btn-hover iq-button" href="{{url('episodes/'.$epi->slug_episode)}}"><i class="fa fa-play mr-1" aria-hidden="true"></i>{{$key+1}}</a>
             @endforeach
+        </div>
+        <div id="comments" class="tab-pane fade" role="tabpanel">
+
+            <div class="fb-comments" data-href="{{\URL::current()}}" data-width="100%" data-numposts="10" style="background-color: white; color: white;"></div>
         </div>
 </section>
 <section id="iq-tvthrillers" class="s-margin">
