@@ -28,12 +28,9 @@
                 <a class="nav-link" href="{{ route('banner.create')}}">Banner</a>
             </li>
         </ul>
-        <form class="my-2 my-lg-0 form-search">
-            <input class="form-control mr-sm-2 input_search_ajax" type="search" id="input_search_ajax" placeholder="Tìm kiếm phim" aria-label="Search">
+        <!-- <form class="my-2 my-lg-0 form-search"> -->
+            <!-- <input class="form-control mr-sm-2 input_search_ajax" type="search" id="input_search_ajax" placeholder="Tìm kiếm phim" aria-label="Search"> -->
             <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm Kiếm</button> -->
-            <div class="result_search">
-                
-            </div>
-        </form>
+        <!-- </form> -->
     </div>
 </nav>

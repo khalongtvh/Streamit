@@ -12,12 +12,12 @@
 <div class="video-container iq-main-slider">
     @if($episode_first)
     <p align="center">
-        <iframe width="900" height="500" src="{!! $episode_first->link_movie !!}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="50%" height="70%" src="{!! $episode_first->link_movie !!}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </p>
     @endif
 </div>
 <section class="movie-detail container-fluid">
-    <h4 class="trending-text text-uppercase mt-0" style="font-size: 40px;">{{$movie->title}}</h4>
+    <h4 class="trending-text text-uppercase mt-0" style="font-size: 40px; padding-top: 20px;">{{$movie->title}}</h4>
     <ul class="list-inline p-0 mt-4 share-icons music-play-lists">
         <form action="{{URL::to('/save-cart')}}" method="POST">
             {{csrf_field()}}
@@ -66,7 +66,11 @@
                             <span style="font-size: 18px;">Quốc Gia > </span>
                             <a style="font-size: 18px;" href="{{route ('country', $movie->country->slug) }}">{{$movie->country->title}}</a>
                         </div>
-                        <p class="trending-dec w-100 mb-0">{{$movie->description}}</p>
+                        <div class="d-flex align-items-center text-white text-detail episode-name mb-0">
+                            <span style="font-size: 18px;">Tóm tắt phim : </span>
+                            <span>{{$movie->description}}</span>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
