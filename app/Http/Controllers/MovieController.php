@@ -53,6 +53,9 @@ class MovieController extends Controller
         $movie->category_id = $data['category_id'];
         $movie->genre_id = $data['genre_id'];
         $movie->country_id = $data['country_id'];
+        $movie->time = $data['time'];
+        $movie->age = $data['age'];
+        $movie->IMDb = $data['IMDb'];
 
         $movie->image = $data['title'];
 

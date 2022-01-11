@@ -32,6 +32,27 @@
                     </div>
                     <!-- end slug -->
 
+                    <!-- Age -->
+                    <div class="form-group">
+                        {!! Form::label('Độ tuổi', 'Age', []) !!}
+                        {!! Form::select('age', ['13+'=>'13+', '16+'=>'16+', '18+'=>'18+'], isset($Movie) ? $Movie->age : '', ['class'=>'form-control']) !!}
+                    </div>
+                    <!-- end Age -->
+
+                    <!-- time -->
+                    <div class="form-group">
+                        {!! Form::label('IMDbg', 'Điểm theo IMDb', []) !!}
+                        {!! Form::text('IMDb', isset($Movie) ? $Movie->IMDb : '', ['class'=>'form-control', 'placeholder'=>'Điểm đánh giá phim theo IMDb'] ) !!}
+                    </div>
+                    <!-- end time -->
+                    
+                    <!-- Điểm IMDb -->
+                    <div class="form-group">
+                        {!! Form::label('Thời lượng', 'Time', []) !!}
+                        {!! Form::text('time', isset($Movie) ? $Movie->time : '', ['class'=>'form-control', 'placeholder'=>'tính theo phút (ví dụ : 75 phút)'] ) !!}
+                    </div>
+                    <!-- end Điểm IMDb -->
+
                     <!-- description -->
                     <div class="form-group">
                         {!! Form::label('description', 'Description', []) !!}
