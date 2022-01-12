@@ -43,7 +43,7 @@ class EpisodeController extends Controller
 
         $episode = new Episode();
         $episode->episode = $data['episode'];
-        $episode->link_movie = "https://www.youtube.com/embed/".$data['link_movie'];
+        $episode->link_movie = $data['link_movie'];
         $episode->slug_episode = $data['slug_episode'];
         $episode->movie_id = $data['movie_id'];
 
@@ -88,7 +88,7 @@ class EpisodeController extends Controller
 
         $episode = Episode::find($id);
         $episode->episode = $data['episode'];
-        $episode->link_movie = "https://www.youtube.com/embed/".$data['link_movie'];
+        $episode->link_movie = $data['link_movie'];
         $episode->slug_episode = $data['slug_episode'];
         $episode->movie_id = $data['movie_id'];
 
