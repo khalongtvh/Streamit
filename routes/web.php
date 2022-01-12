@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\LiveSearchController;
-use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------

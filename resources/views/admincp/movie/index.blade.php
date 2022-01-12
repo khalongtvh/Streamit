@@ -10,7 +10,7 @@
                     <tr>
                         <th scope="col" style="width: 10px;">#</th>
                         <th scope="col">Tên</th>
-                        <th scope="col" style="width: 150px; background-color: red;">Hình Ảnh</th>
+                        <th scope="col" style="width: 150px;">Hình Ảnh</th>
                         <th scope="col">Slug</th>
                         <th scope="col" style="width: 100px;">Mô Tả</th>
                         <th scope="col">Danh Mục</th>

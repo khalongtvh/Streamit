@@ -89,9 +89,9 @@
             @if(Auth::id())
             <div class="container">
                 @include('layouts.navbar')
-                @yield('content')
             </div>
             @endif
+            @yield('content')
         </main>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
