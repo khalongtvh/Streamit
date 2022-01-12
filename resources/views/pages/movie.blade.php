@@ -1,14 +1,5 @@
 @extends('layout')
 @section('content')
-<style>
-    .button {
-        border: none;
-        cursor: pointer;
-        border-radius: 50%;
-        color: white;
-    }
-</style>
-
 <div class="video-container iq-main-slider">
     @if($episode_first)
     <p align="center">
@@ -25,14 +16,13 @@
             <input name="movietitle_hidden" type="hidden" value="{{$movie->title}}" />
             <input name="movieimage_hidden" type="hidden" value="{{$movie->image}}" />
             <li>
-                <button class="button"><span><i class="fa fa-bookmark-o" aria-hidden="true"></i></span></i></button>
+                <button class="button_bookmark"><span><i class="fa fa-bookmark-o" aria-hidden="true"></i></span></i></button>
             </li>
             <li class="share">
                 <span><i class="fa fa-share-square-o" aria-hidden="true"></i></i></span>
                 <div class="share-box">
                     <div class="d-flex align-items-center">
                         <div data-href="{{\URL::current()}}" data-layout="box_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2Fepisodes%2Ftap-1&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fa fa-facebook" aria-hidden="true"></i></a></div>
-                        <a href="#" class="share-ico"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </li>
@@ -55,26 +45,25 @@
     <div class="tab-content">
         <div id="info_movie" class="tab-pane fade active show" role="tabpanel">
             <div class="row" id="info_movsie">
-                <div class="col-lg-12">
-                    <div class="trending-info season-info g-border">
-                        <div class="d-flex align-items-center text-white text-detail episode-name mb-0">
-                            <span style="font-size: 18px;"> Điểm IMDb > </span>
-                            <spans tyle="font-size: 18px;"> 8.0</spans>
+                <div class="main-content">
+                    <section class="movie-detail container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="trending-info g-border">
+                                    <ul class="p-0 list-inline d-flex align-items-center movie-content">
+                                        <li class="text-white"><a href="{{route ('genre', $movie->genre->slug)}}"><span>{{$movie->genre->title}}</span></a></li>
+                                        <li class="text-white"><a href="{{route ('country', $movie->country->slug)}}"><span>{{$movie->country->title}}</span></a></li>
+                                    </ul>
+                                    <div class="d-flex align-items-center text-white text-detail">
+                                        <span class="badge badge-secondary p-3">{{$movie->age}}</span>
+                                        <span class="ml-3">{{$episode->count()}} Seasons</span>
+                                    </div>
+                                    <span class="text-gold ml-3">Tóm tắt : </span>
+                                    <p class="trending-dec w-100 mb-0">{{$movie->description}}</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="d-flex align-items-center text-white text-detail episode-name mb-0">
-                            <span style="font-size: 18px;">Thể Loại > </span>
-                            <a style="font-size: 18px;" href="{{route ('genre', $movie->genre->slug) }}">{{$movie->genre->title}}</a>
-                        </div>
-                        <div class="d-flex align-items-center text-white text-detail episode-name mb-0">
-                            <span style="font-size: 18px;">Quốc Gia > </span>
-                            <a style="font-size: 18px;" href="{{route ('country', $movie->country->slug) }}">{{$movie->country->title}}</a>
-                        </div>
-                        <div class="d-flex align-items-center text-white text-detail episode-name mb-0">
-                            <span style="font-size: 18px;">Tóm tắt phim : </span>
-                            <span>{{$movie->description}}</span>
-                        </div>
-
-                    </div>
+                    </section>
                 </div>
             </div>
         </div>
@@ -84,7 +73,6 @@
             @endforeach
         </div>
         <div id="comments" class="tab-pane fade" role="tabpanel">
-
             <div class="fb-comments" data-href="{{\URL::current()}}" data-width="100%" data-numposts="10" style="background-color: white; color: white;"></div>
         </div>
 </section>
@@ -96,7 +84,41 @@
                     <h4 class="main-title">Phim thể loại tương tự</h4>
                     <a class="iq-view-all" href="{{route ('genre', $movie->genre->slug)}}">Xem tất cả</a>
                 </div>
-                @include('elements.recommented')
+                <div class="tvthrillers-contens">
+                    <ul class="favorites-slider list-inline row p-0 mb-0">
+                        @foreach($movie_recommented as $key=>$recommnented)
+                        <li class="slide-item">
+                            <div class="block-images position-relative">
+                                <div class="img-box">
+                                    <img src="{{asset('backend/uploads/movie/'.$recommnented->image)}}" class="img-fluid" alt="">
+                                </div>
+                                <div class="block-description">
+                                    <h6 class="iq-title"><a href="{{route('movie',$recommnented->slug)}}">{{$recommnented->title}}</a></h6>
+                                    <div class="movie-time d-flex align-items-center my-2">
+                                        <div class="badge badge-secondary p-1 mr-2">{{$recommnented->age}}</div>
+                                    </div>
+                                    <div class="hover-buttons">
+                                        <a href="{{route('movie',$recommnented->slug)}}" class="btn btn-hover iq-button"><i class="fa fa-play mr-1" aria-hidden="true"></i>Play Now</a>
+                                    </div>
+                                </div>
+                                <div class="block-social-info">
+                                    <ul class="list-inline p-0 m-0 music-play-lists">
+                                        <form action="{{URL::to('/save-cart')}}" method="POST">
+                                            {{csrf_field()}}
+                                            <input name="movieid_hidden" type="hidden" value="{{$recommnented->id}}" />
+                                            <input name="movietitle_hidden" type="hidden" value="{{$recommnented->title}}" />
+                                            <input name="movieimage_hidden" type="hidden" value="{{$recommnented->image}}" />
+                                            <li>
+                                                <button class="button_bookmark"><span><i class="fa fa-bookmark-o" aria-hidden="true"></i></span></i></button>
+                                            </li>
+                                        </form>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

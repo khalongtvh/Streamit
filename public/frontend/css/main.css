@@ -123,3 +123,10 @@
 img {
     image-rendering: pixelated;
 }
+
+.button_bookmark {
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    color: white;
+}
