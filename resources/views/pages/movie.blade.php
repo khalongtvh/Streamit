@@ -9,6 +9,11 @@
 </div>
 <section class="movie-detail container-fluid">
     <h4 class="trending-text text-uppercase mt-0" style="font-size: 40px; padding-top: 20px;">{{$movie->title}}</h4>
+    <ul class="ratting-start list-inline d-flex align-items-center justify-content-left" title="Average Rating">
+        @for($count = 1; $count<=5; $count++) @php if($count <=$rating){ $color='color:#ffcc00;' ; }else{ $color='color:#ccc;' ; } @endphp <li title="Đánh giá theo sao" id="{{$movie->id}}-{{$count}}" data-index="{{$count}}" data-movie_id="{{$movie->id}}" data-rating="{{$rating}}" class="rating" style="cursor: pointer;{{$color}} font-size:30px; ">&#9733;
+            </li>
+            @endfor
+    </ul>
     <ul class="list-inline p-0 mt-4 share-icons music-play-lists">
         <form action="{{URL::to('/save-cart')}}" method="POST">
             {{csrf_field()}}
@@ -84,41 +89,7 @@
                     <h4 class="main-title">Phim thể loại tương tự</h4>
                     <a class="iq-view-all" href="{{route ('genre', $movie->genre->slug)}}">Xem tất cả</a>
                 </div>
-                <div class="tvthrillers-contens">
-                    <ul class="favorites-slider list-inline row p-0 mb-0">
-                        @foreach($movie_recommented as $key=>$recommnented)
-                        <li class="slide-item">
-                            <div class="block-images position-relative">
-                                <div class="img-box">
-                                    <img src="{{asset('backend/uploads/movie/'.$recommnented->image)}}" class="img-fluid" alt="">
-                                </div>
-                                <div class="block-description">
-                                    <h6 class="iq-title"><a href="{{route('movie',$recommnented->slug)}}">{{$recommnented->title}}</a></h6>
-                                    <div class="movie-time d-flex align-items-center my-2">
-                                        <div class="badge badge-secondary p-1 mr-2">{{$recommnented->age}}</div>
-                                    </div>
-                                    <div class="hover-buttons">
-                                        <a href="{{route('movie',$recommnented->slug)}}" class="btn btn-hover iq-button"><i class="fa fa-play mr-1" aria-hidden="true"></i>Play Now</a>
-                                    </div>
-                                </div>
-                                <div class="block-social-info">
-                                    <ul class="list-inline p-0 m-0 music-play-lists">
-                                        <form action="{{URL::to('/save-cart')}}" method="POST">
-                                            {{csrf_field()}}
-                                            <input name="movieid_hidden" type="hidden" value="{{$recommnented->id}}" />
-                                            <input name="movietitle_hidden" type="hidden" value="{{$recommnented->title}}" />
-                                            <input name="movieimage_hidden" type="hidden" value="{{$recommnented->image}}" />
-                                            <li>
-                                                <button class="button_bookmark"><span><i class="fa fa-bookmark-o" aria-hidden="true"></i></span></i></button>
-                                            </li>
-                                        </form>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
+                @include('elements.recommented')
             </div>
         </div>
     </div>

@@ -86,6 +86,53 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
+    <script type="text/javascript">
+        function remove_backgound(movie_id){
+            for(var count = 1; count <=5; count++){
+                $('#'+movie_id+'-'+count).css('color', '#ccc');
+            }
+        }
+        //hover rating start
+        $(document).on('mouseenter', '.rating', function(){
+            var index = $(this).data("index");
+            var movie_id = $(this).data("movie_id");
+            remove_backgound(movie_id);
+
+            for(var count = 1; count <= index; count++){
+                $('#'+movie_id+'-'+count).css('color', '#ffcc00');
+            }
+        });
+
+        //remove hover rating start
+        $(document).on('mouseleave', '.rating', function(){
+            var index = $(this).data("index");
+            var movie_id = $(this).data("movie_id");
+            var rating = $(this).data("rating");
+            remove_backgound(movie_id);
+            for(var count = 1; count <= rating; count++){
+                $('#' + movie_id +'-' +count).css('color', '#ffcc00');
+            }
+        });
+
+        // click rating start
+        $(document).on('click', '.rating', function(){
+            var index = $(this).data("index");
+            var movie_id = $(this).data("movie_id");
+            var _token = $('input[name = "_token"]').val();
+            $.ajax({
+                url:"{{url('insert-rating')}}",
+                method:"POST",
+                data:{index:index, movie_id:movie_id, _token:_token},
+                success: function(){
+                    if(data = 'done'){
+                        alert("Bạn đã đánh giá " + index +" sao");
+                    }else{
+                        alert("Đánh giá lỗi");
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -13,7 +13,7 @@
                     <img src="{{asset('backend/uploads/movie/'.$v_content->options->image)}}" alt="" class="card-img">
                     <div class="card-overlay">
                         <div class="bookmark">
-                            <a href="{{URL::to('/delete-to-cart/'.$v_content->rowId)}}" class="cart_quantity_delete"><i class="fa fa-bookmark" aria-hidden="true"></i></a>
+                            <a href="{{URL::to('/delete-to-cart/'.$v_content->rowId)}}" class="cart_quantity_delete"><i class="fa fa-bookmark" aria-hidden="true" style="font-size: 20px;"></i></a>
                         </div>
                         <div class="rating">
                             <ion-icon name="star-outline"></ion-icon>

@@ -15,6 +15,24 @@
 </div>
 <section class="movie-detail container-fluid">
     <h4 class="trending-text text-uppercase mt-0" style="font-size: 40px;">{{$episode->movie->title}}</h4>
+    <ul class="ratting-start list-inline d-flex align-items-center justify-content-left" title="Average Rating">
+        @for($count = 1; $count<=5; $count++) 
+        @php 
+        if($count <=$rating)
+        { $color='color:#ffcc00;' ; }
+        else{ $color='color:#ccc;' ; } 
+        @endphp 
+        <li title="Đánh giá theo sao" 
+            id="{{$episode->movie->id}}-{{$count}}" 
+            data-index="{{$count}}" 
+            data-movie_id="{{$episode->movie->id}}" 
+            data-rating="{{$rating}}"
+            class="rating"
+            style="cursor: pointer;{{$color}} font-size:30px;">&#9733;
+        </li>
+        @endfor
+        <li>({{$rating}}/5)</li>
+    </ul>
     <ul class="list-inline p-0 mt-4 share-icons music-play-lists">
         <form action="{{URL::to('/save-cart')}}" method="POST">
             {{csrf_field()}}

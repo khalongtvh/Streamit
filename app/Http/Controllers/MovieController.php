@@ -7,6 +7,8 @@ use App\Models\Movie;
 use App\Models\Genre;
 use App\Models\Country;
 use App\Models\Category;
+use App\Models\Rate;
+use Laravel\Ui\Presets\React;
 
 class MovieController extends Controller
 {
@@ -154,5 +156,14 @@ class MovieController extends Controller
         }
         $movie->delete();
         return back();
+    }
+
+    public function insert_rating(Request $request){
+        $data = $request->all();
+        $rating = new Rate();
+        $rating->movie_id = $data['movie_id'];
+        $rating->rating = $data['index'];
+        $rating->save();
+        echo 'done';
     }
 }
