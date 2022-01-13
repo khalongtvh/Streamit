@@ -6,17 +6,17 @@
         <iframe width="50%" height="70%" src="https://www.youtube.com/embed/{!! $episode_first->link_movie !!}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </p>
     @else
-    <p align="center" style="margin-top: 60px;">
-        Hiện tại chưa có phim
+    <p align="center">
+        <iframe width="50%" height="70%" src="https://www.youtube.com/embed/{!! $movie->trailer_link !!}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </p>
     @endif
 </div>
 <section class="movie-detail container-fluid">
     <h4 class="trending-text text-uppercase mt-0" style="font-size: 40px; padding-top: 20px;">{{$movie->title}}</h4>
     <ul class="ratting-start list-inline d-flex align-items-center justify-content-left" title="Average Rating">
-        @for($count = 1; $count<=5; $count++) @php if($count <=$rating){ $color='color:#ffcc00;' ; }else{ $color='color:#ccc;' ; } @endphp <li title="Đánh giá theo sao" id="{{$movie->id}}-{{$count}}" data-index="{{$count}}" data-movie_id="{{$movie->id}}" data-rating="{{$rating}}" class="rating" style="cursor: pointer;{{$color}} font-size:30px; ">&#9733;
+        @for($count = 1; $count<=5; $count++) @php if($count <=$rating) { $color='color:#ffcc00;' ; } else{ $color='color:#ccc;' ; } @endphp <li title="Đánh giá theo sao" id="{{$movie->id}}-{{$count}}" data-index="{{$count}}" data-movie_id="{{$movie->id}}" data-rating="{{$rating}}" class="rating" style="cursor: pointer;{{$color}} font-size:30px; ">&#9733;
             </li>
-        @endfor
+            @endfor
     </ul>
     <ul class="list-inline p-0 mt-4 share-icons music-play-lists">
         <form action="{{URL::to('/save-cart')}}" method="POST">

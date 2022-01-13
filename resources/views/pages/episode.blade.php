@@ -25,7 +25,7 @@
         <li title="Đánh giá theo sao" 
             id="{{$episode->movie->id}}-{{$count}}" 
             data-index="{{$count}}" 
-            data-movie_id="{{$episode->movie->id}}" 
+            data-movie_id="{{$episode->movie->id}}"
             data-rating="{{$rating}}"
             class="rating"
             style="cursor: pointer;{{$color}} font-size:30px;">&#9733;
@@ -68,24 +68,27 @@
         </li>
     </ul>
     <div class="tab-content">
-        <div id="info_movie" class="tab-pane fade active show" role="tabpanel">
+    <div id="info_movie" class="tab-pane fade active show" role="tabpanel">
             <div class="row" id="info_movsie">
-                <div class="col-lg-12">
-                    <div class="trending-info season-info g-border">
-                        <div class="d-flex align-items-center text-white text-detail episode-name mb-0">
-                            <span style="font-size: 18px;"> Điểm IMDb > </span>
-                            <spans tyle="font-size: 18px;"> 8.0</spans>
+                <div class="main-content">
+                    <section class="movie-detail container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="trending-info g-border">
+                                    <ul class="p-0 list-inline d-flex align-items-center movie-content">
+                                        <li class="text-white"><a href="{{route ('genre', $episode->movie->genre->slug)}}"><span>{{$episode->movie->genre->title}}</span></a></li>
+                                        <li class="text-white"><a href="{{route ('country', $episode->movie->country->slug)}}"><span>{{$episode->movie->country->title}}</span></a></li>
+                                    </ul>
+                                    <div class="d-flex align-items-center text-white text-detail">
+                                        <span class="badge badge-secondary p-3">{{$episode->movie->age}}</span>
+                                        <span class="ml-3">{{$all_episode->count()}} Seasons</span>
+                                    </div>
+                                    <span class="text-gold ml-3">Tóm tắt : </span>
+                                    <p class="trending-dec w-100 mb-0">{{$episode->movie->description}}</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="d-flex align-items-center text-white text-detail episode-name mb-0">
-                            <span style="font-size: 18px;">Thể Loại > </span>
-                            <a style="font-size: 18px;" href="{{route ('genre', $episode->movie->genre->slug) }}">{{$episode->movie->genre->title}}</a>
-                        </div>
-                        <div class="d-flex align-items-center text-white text-detail episode-name mb-0">
-                            <span style="font-size: 18px;">Quốc Gia > </span>
-                            <a style="font-size: 18px;" href="{{route ('country', $episode->movie->country->slug) }}">{{$episode->movie->country->title}}</a>
-                        </div>
-                        <p class="trending-dec w-100 mb-0">{{$episode->movie->description}}</p>
-                    </div>
+                    </section>
                 </div>
             </div>
         </div>

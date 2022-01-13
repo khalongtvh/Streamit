@@ -57,6 +57,7 @@ class MovieController extends Controller
         $movie->country_id = $data['country_id'];
         $movie->time = $data['time'];
         $movie->age = $data['age'];
+        $movie->trailer_link = $data['trailer_link'];
 
         $movie->image = $data['title'];
 
@@ -122,6 +123,7 @@ class MovieController extends Controller
         $movie->category_id = $data['category_id'];
         $movie->genre_id = $data['genre_id'];
         $movie->country_id = $data['country_id'];
+        $movie->trailer_link = $data['trailer_link'];
 
         $get_image = $request->file('image');
 
