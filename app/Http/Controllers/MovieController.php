@@ -34,7 +34,7 @@ class MovieController extends Controller
         $countryList = Country::pluck('title', 'id');
         $genreList = Genre::pluck('title', 'id');
 
-        return view('admincp.movie.form', compact( 'categoryList', 'countryList', 'genreList'));
+        return view('admincp.movie.form', compact('categoryList', 'countryList', 'genreList'));
     }
 
     /**
@@ -45,6 +45,10 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
+        $validate  = $request->validate([
+            'title' => ['required', 'string', 'max:255', 'unique:movies'],
+            'slug' => ['required', 'string', 'max:255', 'unique:movies'],
+        ]);
         $data = $request->all();
 
         $movie = new Movie();
@@ -100,7 +104,7 @@ class MovieController extends Controller
         $countryList = Country::pluck('title', 'id');
         $genreList = Genre::pluck('title', 'id');
 
-        $Movie = Movie::find($id); 
+        $Movie = Movie::find($id);
         return view('admincp.movie.form', compact('categoryList', 'countryList', 'genreList', 'Movie'));
     }
 
@@ -113,6 +117,11 @@ class MovieController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validate  = $request->validate([
+            'title' => ['required', 'string', 'max:255', 'unique:movies'],
+            'slug' => ['required', 'string', 'max:255', 'unique:movies'],
+        ]);
+
         $data = $request->all();
 
         $movie = Movie::find($id);
@@ -159,7 +168,8 @@ class MovieController extends Controller
         return back();
     }
 
-    public function insert_rating(Request $request){
+    public function insert_rating(Request $request)
+    {
         $data = $request->all();
         $rating = new Rate();
         $rating->movie_id = $data['movie_id'];

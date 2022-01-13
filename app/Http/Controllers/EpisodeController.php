@@ -39,6 +39,11 @@ class EpisodeController extends Controller
      */
     public function store(Request $request)
     {
+        $validate  = $request->validate( [
+            'episode' => ['required', 'string', 'max:255', 'unique:episodes'],
+            'slug_episode' => ['required', 'string', 'max:255', 'unique:episodes'],
+        ]); 
+
         $data = $request->all();
 
         $episode = new Episode();
@@ -84,6 +89,7 @@ class EpisodeController extends Controller
      */
     public function update(Request $request, $id)
     {
+                
         $data = $request->all();
 
         $episode = Episode::find($id);

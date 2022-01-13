@@ -24,21 +24,29 @@
                     <!-- title -->
                     <div class="form-group">
                         {!! Form::label('title', 'Title', []) !!}
-                        {!! Form::text('title', isset($country) ? $country->title : '', ['class'=>'form-control', 'placeholder'=>'nhập dữ liệu', 'id'=>'slug','onkeyup'=>'ChangeToSlug()' ]) !!}
+                        {!! Form::text('title', isset($country) ? $country->title : '', ['class'=>'form-control', 'placeholder'=>'ví dụ : Việt Nam', 'id'=>'slug','onkeyup'=>'ChangeToSlug()', 'required autocomplete' =>'title' ]) !!}
+                    
+                        @error('title')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <!-- end title -->
 
                     <!-- slug -->
                     <div class="form-group">
                         {!! Form::label('slug', 'Slug', []) !!}
-                        {!! Form::text('slug', isset($country) ? $country->slug : '', ['class'=>'form-control', 'placeholder'=>'nhập dữ liệu', 'id'=>'convert_slug'],) !!}
+                        {!! Form::text('slug', isset($country) ? $country->slug : '', ['class'=>'form-control', 'placeholder'=>'ví dụ : viet-nam', 'id'=>'convert_slug', 'required autocomplete' =>'slug']) !!}
+                    
+                        @error('slug')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <!-- end slug -->
 
                     <!-- description -->
                     <div class="form-group">
                         {!! Form::label('description', 'Description', []) !!}
-                        {!! Form::textarea('description', isset($country) ? $country->description : '', ['class'=>'form-control', 'placeholder'=>'nhập dữ liệu', 'id'=>'description']) !!}
+                        {!! Form::textarea('description', isset($country) ? $country->description : '', ['class'=>'form-control', 'placeholder'=>'ví dụ : Phim Việt Nam', 'id'=>'description','required autocomplete' =>'mô tả']) !!}
                     </div>
                     <!-- end description -->
 

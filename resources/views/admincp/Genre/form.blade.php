@@ -23,21 +23,27 @@
                     <!-- title -->
                     <div class="form-group">
                         {!! Form::label('title', 'Title', []) !!}
-                        {!! Form::text('title', isset($Genre) ? $Genre->title : '', ['class'=>'form-control', 'placeholder'=>'nhập dữ liệu', 'id'=>'slug','onkeyup'=>'ChangeToSlug()'] ) !!}
+                        {!! Form::text('title', isset($Genre) ? $Genre->title : '', ['class'=>'form-control', 'placeholder'=>'ví dụ : Hành Động', 'id'=>'slug','onkeyup'=>'ChangeToSlug()', 'required autocomplete' =>'title'] ) !!}
+                        @error('title')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <!-- end title -->
 
                     <!-- slug -->
                     <div class="form-group">
                         {!! Form::label('slug', 'Slug', []) !!}
-                        {!! Form::text('slug', isset($Genre) ? $Genre->slug : '', ['class'=>'form-control', 'placeholder'=>'nhập dữ liệu', 'id'=>'convert_slug'],) !!}
+                        {!! Form::text('slug', isset($Genre) ? $Genre->slug : '', ['class'=>'form-control', 'placeholder'=>'ví dụ : hanh-dong', 'id'=>'convert_slug', 'required autocomplete' =>'slug']) !!}
+                        @error('slug')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <!-- end slug -->
 
                     <!-- description -->
                     <div class="form-group">
                         {!! Form::label('description', 'Description', []) !!}
-                        {!! Form::textarea('description', isset($Genre) ? $Genre->description : '', ['class'=>'form-control', 'placeholder'=>'nhập dữ liệu', 'id'=>'description']) !!}
+                        {!! Form::textarea('description', isset($Genre) ? $Genre->description : '', ['class'=>'form-control', 'placeholder'=>'phim hành động', 'id'=>'description', 'required autocomplete' =>'slug']) !!}
                     </div>
                     <!-- end description -->
 

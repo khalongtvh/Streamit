@@ -36,6 +36,10 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
+        $validate  = $request->validate( [
+            'title' => ['required', 'string', 'max:255', 'unique:countries'],
+            'slug' => ['required', 'string', 'max:255', 'unique:countries'],
+        ]); 
         $data = $request->all();
         $country = new Country();
         $country->title = $data['title'];
@@ -81,6 +85,10 @@ class CountryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validate  = $request->validate( [
+            'title' => ['required', 'string', 'max:255', 'unique:countries'],
+            'slug' => ['required', 'string', 'max:255', 'unique:countries'],
+        ]); 
         $data = $request->all();
         $Country = Country::find($id);
         $Country->title = $data['title'];

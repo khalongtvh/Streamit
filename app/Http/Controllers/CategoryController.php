@@ -37,6 +37,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $validate  = $request->validate( [
+            'title' => ['required', 'string', 'max:255', 'unique:categories'],
+            'slug' => ['required', 'string', 'max:255', 'unique:categories'],
+        ]); 
+
         $data = $request->all();
         $category = new Category();
         $category->title = $data['title'];
@@ -82,6 +87,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validate  = $request->validate([
+            'title' => ['required', 'string', 'max:255', 'unique:categories'],
+            'slug' => ['required', 'string', 'max:255', 'unique:categories'],
+        ]);
         $data = $request->all();
         $category = Category::find($id);
         $category->title = $data['title'];

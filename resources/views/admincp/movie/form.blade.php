@@ -4,7 +4,10 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <center><h4>Thêm phim mới</h4></center><hr>
+                <center>
+                    <h4>Thêm phim mới</h4>
+                </center>
+                <hr>
                 <div class="card-body">
                     @if (session('status'))
                     <div class="alert alert-success" role="alert">
@@ -20,14 +23,20 @@
                     <!-- title -->
                     <div class="form-group">
                         {!! Form::label('title', 'Title', []) !!}
-                        {!! Form::text('title', isset($Movie) ? $Movie->title : '', ['class'=>'form-control', 'placeholder'=>'nhập dữ liệu', 'id'=>'slug','onkeyup'=>'ChangeToSlug()'] ) !!}
+                        {!! Form::text('title', isset($Movie) ? $Movie->title : '', ['class'=>'form-control', 'placeholder'=>'ví dụ : Ma Trận', 'id'=>'slug','onkeyup'=>'ChangeToSlug()', 'required autocomplete' =>'title'] ) !!}
+                        @error('title')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <!-- end title -->
 
                     <!-- slug -->
                     <div class="form-group">
                         {!! Form::label('slug', 'Slug', []) !!}
-                        {!! Form::text('slug', isset($Movie) ? $Movie->slug : '', ['class'=>'form-control', 'placeholder'=>'nhập dữ liệu', 'id'=>'convert_slug'],) !!}
+                        {!! Form::text('slug', isset($Movie) ? $Movie->slug : '', ['class'=>'form-control', 'placeholder'=>'ví dụ : ma-tran', 'id'=>'convert_slug', 'required autocomplete' =>'slug']) !!}
+                        @error('slug')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <!-- end slug -->
 
@@ -41,14 +50,14 @@
                     <!-- time -->
                     <div class="form-group">
                         {!! Form::label('Thời lượng', 'Time', []) !!}
-                        {!! Form::text('time', isset($Movie) ? $Movie->time : '', ['class'=>'form-control', 'placeholder'=>'tính theo phút (ví dụ : 75 phút)'] ) !!}
+                        {!! Form::text('time', isset($Movie) ? $Movie->time : '', ['class'=>'form-control', 'placeholder'=>'tính theo phút (ví dụ : 75 phút)', 'required autocomplete' =>'time'] ) !!}
                     </div>
                     <!-- end time -->
 
                     <!-- description -->
                     <div class="form-group">
                         {!! Form::label('description', 'Description', []) !!}
-                        {!! Form::textarea('description', isset($Movie) ? $Movie->description : '', ['class'=>'form-control', 'placeholder'=>'nhập dữ liệu', 'id'=>'description']) !!}
+                        {!! Form::textarea('description', isset($Movie) ? $Movie->description : '', ['class'=>'form-control', 'placeholder'=>'ví dụ : phim ma trận', 'id'=>'description', 'required autocomplete' =>'mô tả']) !!}
                     </div>
                     <!-- end description -->
 
@@ -59,7 +68,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon3">https://www.youtube.com/watch?v=</span>
                             </div>
-                            {!! Form::text('trailer_link', isset($Movie) ? $Movie->trailer_link : '', ['class'=>'form-control', 'placeholder'=>'hoRimjICuqw', 'id'=>'trailer_link']) !!}
+                            {!! Form::text('trailer_link', isset($Movie) ? $Movie->trailer_link : '', ['class'=>'form-control', 'placeholder'=>'ví dụ : hoRimjICuqw', 'id'=>'trailer_link', 'required autocomplete' =>'link']) !!}
                         </div>
                     </div>
 
@@ -92,21 +101,23 @@
                         {!! Form::select('status', ['1'=>"Hiển Thị", '0'=>"Ẩn"], isset($Movie) ? $Movie->status : '', ['class'=>'form-control']) !!}
                     </div>
                     <!-- end status -->
-                    
+
                     <!-- image -->
                     <div class="form-group">
                         {!! Form::label('Image', 'Image', []) !!}
-                        {!! Form::file('image', ['class'=>'form-control-file']) !!}
 
                         @if(isset($Movie))
-                            <img src="{{asset('backend/uploads/movie/'.$Movie->image)}}" alt="{{$Movie->image}}" width="10%" class="img-thumbnail">
+                        <img src="{{asset('backend/uploads/movie/'.$Movie->image)}}" alt="{{$Movie->image}}" width="10%" class="img-thumbnail">
+                        {!! Form::file('image', ['class'=>'form-control-file']) !!}
+                        @else
+                        {!! Form::file('image', ['class'=>'form-control-file', 'required autocomplete' =>'image']) !!}
                         @endif
                     </div>
                     <!-- end image -->
                     @if(isset($Movie))
-                        {!! Form::submit('Cập Nhật', ['class'=>'btn btn-success']) !!}
+                    {!! Form::submit('Cập Nhật', ['class'=>'btn btn-success']) !!}
                     @else
-                        {!! Form::submit('Lưu', ['class'=>'btn btn-success']) !!}
+                    {!! Form::submit('Lưu', ['class'=>'btn btn-success']) !!}
                     @endif
                     {!! Form::close() !!}
                 </div>

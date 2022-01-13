@@ -24,14 +24,20 @@
                     <!-- title -->
                     <div class="form-group">
                         {!! Form::label('episode', 'Tên tập phim', []) !!}
-                        {!! Form::text('episode', isset($episode) ? $episode->episode : '', ['class'=>'form-control', 'placeholder'=>'nhập dữ liệu', 'id'=>'slug','onkeyup'=>'ChangeToSlug()' ]) !!}
+                        {!! Form::text('episode', isset($episode) ? $episode->episode : '', ['class'=>'form-control', 'placeholder'=>'ví dụ : Ma Trận Tập 1', 'id'=>'slug','onkeyup'=>'ChangeToSlug()', 'required autocomplete' =>'episode' ]) !!}
+                        @error('episode')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <!-- end title -->
 
                     <!-- slug -->
                     <div class="form-group">
                         {!! Form::label('slug_episode', 'Slug', []) !!}
-                        {!! Form::text('slug_episode', isset($episode) ? $episode->slug_episode : '', ['class'=>'form-control', 'placeholder'=>'nhập dữ liệu', 'id'=>'convert_slug']) !!}
+                        {!! Form::text('slug_episode', isset($episode) ? $episode->slug_episode : '', ['class'=>'form-control', 'placeholder'=>'ma-tran-tap-1', 'id'=>'convert_slug', 'required autocomplete' =>'slug_episode']) !!}
+                        @error('slug_episode')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <!-- end slug -->
 
@@ -42,10 +48,9 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon3">https://www.youtube.com/watch?v=</span>
                             </div>
-                            {!! Form::text('link_movie', isset($episode) ? $episode->link_movie : '', ['class'=>'form-control', 'placeholder'=>'hoRimjICuqw', 'id'=>'link']) !!}
+                            {!! Form::text('link_movie', isset($episode) ? $episode->link_movie : '', ['class'=>'form-control', 'placeholder'=>'ví dụ : hoRimjICuqw', 'id'=>'link','required autocomplete' =>'link phim']) !!}
                         </div>
                     </div>
-                    <label for="basic-url">Link</label>
 
                     <!-- end link -->
 

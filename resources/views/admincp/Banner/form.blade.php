@@ -34,10 +34,12 @@
                     <!-- image -->
                     <div class="form-group">
                         {!! Form::label('Image', 'Image', []) !!}
-                        {!! Form::file('image', ['class'=>'form-control-file']) !!}
 
                         @if(isset($banner))
                         <img src="{{asset('backend/uploads/banner/'.$banner->image)}}" alt="{{$banner->image}}" width="10%" class="img-thumbnail">
+                        {!! Form::file('image', ['class'=>'form-control-file']) !!}
+                        @else
+                        {!! Form::file('image', ['class'=>'form-control-file', 'required autocomplete' =>'image']) !!}
                         @endif
                     </div>
                     <!-- end image -->
