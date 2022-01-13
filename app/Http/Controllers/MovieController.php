@@ -117,10 +117,7 @@ class MovieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validate  = $request->validate([
-            'title' => ['required', 'string', 'max:255', 'unique:movies'],
-            'slug' => ['required', 'string', 'max:255', 'unique:movies'],
-        ]);
+        
 
         $data = $request->all();
 

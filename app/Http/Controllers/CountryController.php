@@ -85,10 +85,7 @@ class CountryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validate  = $request->validate( [
-            'title' => ['required', 'string', 'max:255', 'unique:countries'],
-            'slug' => ['required', 'string', 'max:255', 'unique:countries'],
-        ]); 
+         
         $data = $request->all();
         $Country = Country::find($id);
         $Country->title = $data['title'];
