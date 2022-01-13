@@ -5,9 +5,6 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\LiveSearchController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\MovieController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,7 +31,7 @@ Route::get('/show-cart', [CartController::class, 'show_cart'])->name('show_cart'
 Route::get('/delete-to-cart/{rowId}', [CartController::class, 'delete_to_cart']);
 
 //rating
-Route::post('/insert-rating', [MovieController::class, 'insert_rating']);
+Route::post('/insert-rating','MovieController@insert_rating');
 
 Auth::routes();
 

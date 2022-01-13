@@ -40,17 +40,10 @@
 
                     <!-- time -->
                     <div class="form-group">
-                        {!! Form::label('IMDbg', 'Điểm theo IMDb', []) !!}
-                        {!! Form::text('IMDb', isset($Movie) ? $Movie->IMDb : '', ['class'=>'form-control', 'placeholder'=>'Điểm đánh giá phim theo IMDb'] ) !!}
-                    </div>
-                    <!-- end time -->
-                    
-                    <!-- Điểm IMDb -->
-                    <div class="form-group">
                         {!! Form::label('Thời lượng', 'Time', []) !!}
                         {!! Form::text('time', isset($Movie) ? $Movie->time : '', ['class'=>'form-control', 'placeholder'=>'tính theo phút (ví dụ : 75 phút)'] ) !!}
                     </div>
-                    <!-- end Điểm IMDb -->
+                    <!-- end time -->
 
                     <!-- description -->
                     <div class="form-group">
@@ -58,6 +51,19 @@
                         {!! Form::textarea('description', isset($Movie) ? $Movie->description : '', ['class'=>'form-control', 'placeholder'=>'nhập dữ liệu', 'id'=>'description']) !!}
                     </div>
                     <!-- end description -->
+
+                    <!-- link_movie -->
+                    <div class="form-group">
+                        {!! Form::label('trailer_link', 'trailer_link', []) !!}
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon3">https://www.youtube.com/watch?v=</span>
+                            </div>
+                            {!! Form::text('trailer_link', isset($Movie) ? $Movie->trailer_link : '', ['class'=>'form-control', 'placeholder'=>'hoRimjICuqw', 'id'=>'trailer_link']) !!}
+                        </div>
+                    </div>
+
+                    <!-- end link -->
 
                     <!-- category -->
                     <div class="form-group">
