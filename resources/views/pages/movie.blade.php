@@ -5,6 +5,10 @@
     <p align="center">
         <iframe width="50%" height="70%" src="{!! $episode_first->link_movie !!}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </p>
+    @else
+    <p align="center" style="margin-top: 60px;">
+        Hiện tại chưa có phim
+    </p>
     @endif
 </div>
 <section class="movie-detail container-fluid">
