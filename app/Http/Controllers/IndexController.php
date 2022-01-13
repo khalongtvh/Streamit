@@ -20,8 +20,12 @@ class IndexController extends Controller
         $genreList = Genre::orderBy('id', 'DESC')->where('status', 1)->get();
         $countryList = Country::orderBy('title', 'DESC')->where('status', 1)->get();
         $bannerList = Banner::orderBy('id', 'DESC')->where('status', 1)->get();
+
         $category_home = Category::with('movie')->orderBy('id', 'DESC')->where('status', 1)->get();
-        return view('pages.home', compact('categoryList', 'genreList', 'countryList', 'bannerList', 'category_home'));
+
+        $movies_new = Movie::orderBy('id', 'DESC')->paginate(10);
+
+        return view('pages.home', compact('categoryList', 'genreList', 'countryList', 'bannerList', 'category_home', 'movies_new'));
     }
 
     public function category($slug)
@@ -31,13 +35,7 @@ class IndexController extends Controller
         $countryList = Country::orderBy('title', 'DESC')->where('status', 1)->get();
         $category_slug = Category::where('slug', $slug)->first();
         $movie = Movie::where('category_id', $category_slug->id)->paginate(14);
-
-        echo $movie;
-        // $rating = Rate::where('movie_id', $movie->id)->avg('rating');
-
-        // $rating = round($rating);
-        // echo $rating;
-        // return view('pages.category', compact('categoryList', 'genreList', 'countryList', 'category_slug', 'movie', 'rating'));
+        return view('pages.category', compact('categoryList', 'genreList', 'countryList', 'category_slug', 'movie'));
     }
 
     public function genre($slug)

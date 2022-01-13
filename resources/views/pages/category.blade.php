@@ -9,13 +9,6 @@
                 <div class="card-head">
                     <img src="{{asset('backend/uploads/movie/'.$mov->image)}}" alt="" class="card-img">
                     <div class="card-overlay">
-                        <div class="bookmark">
-                            <ion-icon name="bookmark-outline"></ion-icon>
-                        </div>
-                        <div class="rating">
-                            <ion-icon name="star-outline"></ion-icon>
-                            <span>$rating</span>
-                        </div>
                         <a class="play" href="{{route('movie',$mov->slug)}}">
                             <ion-icon name="play-circle-outline"></ion-icon>
                         </a>
