@@ -14,7 +14,7 @@
                         </div>
                         <div class="rating">
                             <ion-icon name="star-outline"></ion-icon>
-                            <span>7.4</span>
+                            <span>$rating</span>
                         </div>
                         <a class="play" href="{{route('movie',$mov->slug)}}">
                             <ion-icon name="play-circle-outline"></ion-icon>
