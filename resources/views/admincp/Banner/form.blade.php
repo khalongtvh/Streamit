@@ -4,8 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <a href="{{route ('banner.index')}}" class="btn btn-success"> Liệt Kê</a>
-                <div class="card-header">Quản lý banner</div>
+                <center><h4>Quản lý banner</h4></center><hr>
                 <div class="card-body">
                     @if (session('status'))
                     <div class="alert alert-success" role="alert">

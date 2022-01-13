@@ -4,8 +4,10 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Quản lý thể loại</div>
-                <a href="{{route ('genre.create')}}" class="btn btn-outline-primary" style="width: 10%; margin: 16px">Thêm Mới</a>
+                <center>
+                    <h4>Danh sách thể loại</h4>
+                </center>
+                <hr>
             </div>
 
             <table class="table" id="table">

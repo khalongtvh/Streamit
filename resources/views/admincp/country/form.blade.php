@@ -4,8 +4,10 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Quản lý danh sách quốc gia</div>
-                <a href="{{route ('country.index')}}" class="btn btn-success" style="width: 10%; margin-top:16px">Liệt Kê</a>
+                <center>
+                    <h4>Cập nhật danh sách quốc gia</h4>
+                </center>
+                <hr>
                 <div class="card-body">
                     @if (session('status'))
                     <div class="alert alert-success" role="alert">

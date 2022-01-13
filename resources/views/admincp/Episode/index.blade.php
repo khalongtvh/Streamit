@@ -3,7 +3,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-        <a href="{{route ('episode.create')}}" class="btn btn-success">Thêm Phim</a>
+            <center>
+                <h4>Danh sách tập phim</h4>
+            </center>
+            <hr>
             <table class="table" id="table">
                 <thead class="thead-dark">
                     <tr>

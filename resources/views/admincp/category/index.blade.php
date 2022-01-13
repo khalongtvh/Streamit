@@ -4,8 +4,10 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Quản lý thể loại</div>
-                <a href="{{route ('category.create')}}" class="btn btn-success">Thêm Mới</a>
+                <center>
+                    <h4>Quản lý danh mục</h4>
+                </center>
+                <hr>
             </div>
 
             <table class="table" id="table">

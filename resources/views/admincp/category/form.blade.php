@@ -4,8 +4,10 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Quản lý thể loại</div>
-                <a href="{{route ('category.index')}}" class="btn btn-success">Liệt Kê</a>
+                <center>
+                    <h4>Cập nhật danh mục</h4>
+                </center>
+                <hr>
                 <div class="card-body">
                     @if (session('status'))
                     <div class="alert alert-success" role="alert">
@@ -47,9 +49,9 @@
                     </div>
                     <!-- end status -->
                     @if(isset($category))
-                        {!! Form::submit('Cập Nhật', ['class'=>'btn btn-success']) !!}
+                    {!! Form::submit('Cập Nhật', ['class'=>'btn btn-success']) !!}
                     @else
-                        {!! Form::submit('Lưu', ['class'=>'btn btn-success']) !!}
+                    {!! Form::submit('Lưu', ['class'=>'btn btn-success']) !!}
                     @endif
                     {!! Form::close() !!}
                 </div>

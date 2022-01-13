@@ -4,8 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <a href="{{route ('movie.index')}}" class="btn btn-success"> Liệt Kê</a>
-                <div class="card-header">Quản lý phim</div>
+                <center><h4>Thêm phim mới</h4></center><hr>
                 <div class="card-body">
                     @if (session('status'))
                     <div class="alert alert-success" role="alert">

@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-xl-12">
-            <a href="{{route ('movie.create')}}" class="btn btn-success">Thêm Phim</a>
-            <table class="table" id="table" style="width: 100%;">
+            <center><h4>Quản Lý Phim</h4></center><hr>
+            <table class="table" id="table">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col" style="width: 10px;">#</th>

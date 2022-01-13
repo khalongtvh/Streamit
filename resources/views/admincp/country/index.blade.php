@@ -3,10 +3,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">Quản lý danh sách quốc gia</div>
-                <a href="{{route ('country.create')}}" class="btn btn-success" style="width: 10%; margin-top:16px">Thêm Mới</a>
-            </div>
+                <center>
+                    <h4>Danh sách quốc gia</h4>
+                </center>
+                <hr>
             <table class="table" id="table">
                 <thead class="thead-dark">
                     <tr>

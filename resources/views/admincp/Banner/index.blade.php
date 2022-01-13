@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <a href="{{route ('banner.create')}}" class="btn btn-success">Thêm Banner</a>
+        <center><h4>Quản lý banner</h4></center><hr>
             <table class="table" id="table">
                 <thead class="thead-dark">
                     <tr>
