@@ -3,7 +3,7 @@
 <div class="video-container iq-main-slider">
     @if($episode_first)
     <p align="center">
-        <iframe width="50%" height="70%" src="{!! $episode_first->link_movie !!}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="50%" height="70%" src="https://www.youtube.com/embed/{!! $episode_first->link_movie !!}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </p>
     @else
     <p align="center" style="margin-top: 60px;">
